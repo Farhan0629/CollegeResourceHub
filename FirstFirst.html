@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year - First Semester</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #003366; /* Deep Blue background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Light transparent white */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 500px;
+            text-align: center;
+        }
+
+        header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .subject-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+            gap: 15px; /* Spacing between cards */
+        }
+
+        .subject-card {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subject-card:hover {
+            background-color: #dcdcdc;
+            transform: scale(1.05);
+        }
+
+        .dropdown-container {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .subject-card.selected .dropdown-container {
+            display: block;
+        }
+
+        select {
+            width: 90%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .btn-go {
+            display: block;
+            width: 100%;
+            background-color: #FF3300;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-go:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>First Year - First Semester</header>
+    <div class="subject-cards-container">
+        <div class="subject-card" id="basic-electronics">
+            <h3>Basic Electronics</h3>
+            <div class="dropdown-container">
+                <select id="basic-electronics-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="subject-card" id="programming">
+            <h3>Programming for Problem Solving</h3>
+            <div class="dropdown-container">
+                <select id="programming-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="subject-card" id="engineering-math">
+            <h3>Engineering Mathematics</h3>
+            <div class="dropdown-container">
+                <select id="engineering-math-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="subject-card" id="evs">
+            <h3>EVS</h3>
+            <div class="dropdown-container">
+                <select id="evs-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="subject-card" id="professional-communication">
+            <h3>Professional Communication</h3>
+            <div class="dropdown-container">
+                <select id="professional-communication-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="subject-card" id="workshop">
+            <h3>Workshop</h3>
+            <div class="dropdown-container">
+                <select id="workshop-select">
+                    <option value="notes">Notes</option>
+                    <option value="pyqs">PYQs</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button class="btn-go" id="go-button" onclick="goToPage()">Go</button>
+</div>
+
+<script>
+    // Add event listeners to subject cards for toggling dropdowns
+    document.querySelectorAll('.subject-card').forEach(card => {
+        card.addEventListener('click', function () {
+            document.querySelectorAll('.subject-card').forEach(item => item.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+
+    function goToPage() {
+        let selectedSubject = '';
+        let selectedOption = '';
+
+        document.querySelectorAll('.subject-card.selected').forEach(card => {
+            const subjectId = card.id;
+            const selectElement = document.getElementById(subjectId + '-select');
+            selectedSubject = subjectId.replace('-', ' ').toUpperCase();
+            selectedOption = selectElement.value;
+
+            alert(`You selected ${selectedSubject} - ${selectedOption}`);
+            // Implement navigation logic here
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
