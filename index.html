@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLLEGE RESOURCE HUB SIGN UP</title>
+    <style>
+        /* Page Background */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(7, 37, 99, 0.8), rgba(7, 37, 99, 0.8)), 
+                        url('https://thumbs.dreamstime.com/b/image-long-hallway-lined-blue-bookcases-filled-books-light-end-dark-creates-sense-hope-possibility-346619166.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+        }
+
+        /* Login box styling */
+        .login-container {
+            background: rgba(255, 255, 255, 0.926); /* हल्का transparent सफेद */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+        }
+
+        /* Heading का स्टाइल */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: rgb(21, 1, 1);
+        }
+
+        /* Form labels */
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color:black;
+        }
+
+        /* Input fields */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Login button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #FF3300; /* Red button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Green on hover */
+        }
+
+        /* Error और Success message */
+        #error-message, #success-message {
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        #error-message { color: rgb(242, 8, 8); }
+        #success-message { color: rgb(5, 161, 5); }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>SIGN UP TO COLLEGE RESOURCE HUB</h1>
+        <form id="login-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            
+            <label for="college-id">JISU ID:</label>
+            <input type="text" id="college-id" placeholder="Enter your JISU ID" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p id="error-message"></p>
+        <p id="success-message"></p>
+    </div>
+
+    <script>
+        // Login form validation
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('error-message').style.display = "none";
+            document.getElementById('success-message').style.display = "none";
+
+            const name = document.getElementById('name').value.trim();
+            const collegeId = document.getElementById('college-id').value.trim();
+
+            const idPattern = /^JISU\/20\d{2}\/\d{4}$/;
+
+            if (!name || !collegeId) {
+                showErrorMessage("Please fill out all fields.");
+                return;
+            }
+
+            if (!idPattern.test(collegeId)) {
+                showErrorMessage("Incorrect JISU ID!");
+                return;
+            }
+
+            showSuccessMessage();
+        });
+
+        function showErrorMessage(message) {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = message;
+            errorMessage.style.display = "block";
+        }
+
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = "Sign Up Successful!!";
+            successMessage.style.display = "block";
+
+            setTimeout(function() {
+                window.location.href = 'Welcome.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
