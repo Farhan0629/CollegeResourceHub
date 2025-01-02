@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Resource Hub</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #072563, #2d65a3);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .welcome-message p {
+            margin: 10px 0;
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .dropdown-btn {
+            width: 90%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #ff63d8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-btn:hover {
+            background-color: #e935a4;
+        }
+
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            border-radius: 5px;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .dropdown-item {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #9bc6f8;
+        }
+
+        .dropdown-item:hover {
+            background-color: #444;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: black;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Welcome to Your Academic Hub</h1>
+        </header>
+
+        <!-- Creative Welcome Message -->
+        <div class="welcome-message" style="background-color: black;">
+            <p>✨ Dive into a world of limitless learning! ✨</p>
+            <p>Your one-stop destination for academic resources tailored for excellence.</p>
+            <p>Navigate through your year, explore books, and embrace the journey ahead!</p>
+        </div>
+
+        <!-- Dropdown for Academic Year -->
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('dropdown-academic')">Select Your Academic Year</button>
+            <div class="dropdown-options" id="dropdown-academic">
+                <div class="dropdown-item" onclick="alert('You selected First Year')">First Year</div>
+                <div class="dropdown-item" onclick="alert('You selected Second Year')">Second Year</div>
+                <div class="dropdown-item" onclick="alert('You selected Third Year')">Third Year</div>
+                <div class="dropdown-item" onclick="alert('You selected Fourth Year')">Fourth Year</div>
+            </div>
+        </div>
+
+        <!-- Dropdown for Books -->
+        <div class="dropdown">
+            <button class="dropdown-btn" style="background-color: #bc71db;" onclick="toggleDropdown('dropdown-books')">Select Your Book</button>
+            <div class="dropdown-options" id="dropdown-books">
+                <div class="dropdown-item" onclick="alert('You selected Mathematics')">Let Us C</div>
+                <div class="dropdown-item" onclick="alert('You selected Physics')">Programming in ANSI</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 College Resource Hub. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Function to toggle dropdown visibility
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+
+            // Close all open dropdowns
+            document.querySelectorAll('.dropdown-options').forEach(option => {
+                if (option !== dropdown) option.style.display = 'none';
+            });
+
+            // Toggle current dropdown
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (e) {
+            if (!e.target.matches('.dropdown-btn')) {
+                document.querySelectorAll('.dropdown-options').forEach(option => {
+                    option.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
